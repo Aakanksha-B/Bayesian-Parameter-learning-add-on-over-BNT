@@ -1,0 +1,5 @@
+function [] = print_gaussian_param(bnet,i)
+full_mean = get_field(bnet.CPD{i},'full_mean')
+% mean = get_field(bnet.CPD{i},'mean')
+% cov = get_field(bnet.CPD{i},'cov')
+% weights = get_field(bnet.CPD{i},'weights')

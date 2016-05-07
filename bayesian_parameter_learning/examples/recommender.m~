@@ -1,0 +1,29 @@
+function [] =recommender(iname,attr)
+close all;
+load('bnet-fashion.mat');
+
+engine = jtree_inf_engine(bnet_dam);
+evidence = cell(1,n); % no evidence
+% change to line by line if all attributes are not available.
+switch (iname)
+    case 'top', evidence{1:6}= attr; 
+    case 'bottom', evidence{7:10}= attr;
+    case 'bag', evidence{11:14}= attr; 
+end
+
+[engine, ll] = enter_evidence(engine, evidence);
+
+
+for i=bnet.dnodes(:)'
+    i;
+    m = marginal_nodes(engine, i,1);
+    m.T;
+    max_i = find(m.T == max(m.T));
+    if isempty(max_i)
+        ia_vals(i) = 0;
+    else
+        ia_vals(i) = max_i;
+    end
+end
+
+prepare_look(ia_ind,ia_prob,bnet)

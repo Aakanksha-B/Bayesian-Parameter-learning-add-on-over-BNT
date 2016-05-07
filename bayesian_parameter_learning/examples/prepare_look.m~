@@ -1,0 +1,42 @@
+function [] = prepare_look(ia_val,ia_prob,bnet)
+
+
+
+for i= numel{ia_val}
+    num_ia(i) = numel(ia_val{i});
+    prod_sz = prod_sz * numel(ia_val{i});
+end
+
+outfits = zeros(length(bnet.node_sizes),prod_sz);
+t = 1;
+for l = 1:length(num_ai)
+    k=1;
+    value =1;
+    while k<=prod_sz
+        if value>num_ai(l)
+            value = 1;
+        end    
+        outfit(l,k:k+t-1)= ia_val{k}(value); %k - item attr  value- index in its possible vals
+        k= k+t;
+        value=value+1;
+    end
+    t = t*ns(l);
+end 
+
+top_names = match_top(outfit(1:6));
+bottom_names = match_bottom(outfit(7:11));
+bag_names = match_bottom(outfit(11:14));
+
+scrsz = get(groot,'ScreenSize');
+
+figure('name',['bottom' int2str(ll)],'Position',[3*ll*100 300 scrsz(3)/2 scrsz(4)/2]),
+
+for i =length(bottom_name)
+     im = imread('templates2/'+bottom_name(i));
+     imshow(im);
+end
+imshow()
+
+
+
+
