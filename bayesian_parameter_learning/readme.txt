@@ -1,9 +1,10 @@
-Steps for learning 
+Steps for learning paramters-
+
 1.) Specify a dag which models the structure of bayesian network 
 to be learnt.
-2.) set some initial parameter for the distribution of each node 
+2.) Set some initial parameter for the distribution of each node 
 based on it's type and and its parents type.
-3.) the paramters 'nu' specifies your belief (basically the
+3.) The paramters 'nu' specifies your belief (basically the
 no. of samples you would have seen to have set the prior parameters).
 set it to
 0 : if you know nothing
